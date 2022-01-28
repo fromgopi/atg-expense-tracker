@@ -1,5 +1,7 @@
 package com.agritekgenics.atgexpensesapi.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,8 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "sub_category")
+@Getter
+@Setter
+@NoArgsConstructor
 public class SubCategory {
     // Column names
     @Id
@@ -20,32 +29,6 @@ public class SubCategory {
     @Column(name = "sub_category")
     private String sub_category = "";
 
-    @ManyToOne
-    private Category category_id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSub_category() {
-        return sub_category;
-    }
-
-    public void setSub_category(String sub_category) {
-        this.sub_category = sub_category;
-    }
-
-    public Category getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(Category category_id) {
-        this.category_id = category_id;
-    }
-
-    
+    @ManyToOne(targetEntity = Category.class)
+    private List<Category> category;
 }

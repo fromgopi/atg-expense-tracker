@@ -8,3 +8,7 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+server:
+  servlet:
+    context-path: "/v1/api"

@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
 @Table(name = "category")
+@Getter @Setter @NoArgsConstructor
 public class Category {
     // Column Names
     @Id
@@ -17,28 +22,4 @@ public class Category {
     private Long id;
     @Column(name = "category_name", nullable = false)
     private String category_name = "";
-
-    public Category() {
-
-    }
-
-    public Category(String category_name) {
-        this.category_name = category_name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCategory_name() {
-        return category_name;
-    }
-
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
-    }
 }
