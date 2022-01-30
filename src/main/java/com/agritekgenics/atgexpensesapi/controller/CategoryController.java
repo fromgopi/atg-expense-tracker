@@ -22,6 +22,7 @@ public class CategoryController {
     public ResponseEntity<List<Category>> get(){
         System.out.println("Coming into controller");
         List<Category> res =  categoryRepository.findAll();
+        System.out.println(res);
         return ResponseEntity.ok(res);
     }
 }
