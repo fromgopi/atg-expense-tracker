@@ -1,3 +1,5 @@
 require('./bootstrap');
-require('./index');
-require('./component/Main.js')
+require('./src');
+// require('./src/store')
+// We should include all the files.
+// require('./src/component/')
