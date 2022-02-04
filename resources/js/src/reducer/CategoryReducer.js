@@ -1,5 +1,6 @@
 import {ERROR_TYPE, GET_CATEGORIES, LOAD_CATEGORIES} from "../commons/types";
 
+
 const initialState = {
     categoryList: [],
     loading: true,
