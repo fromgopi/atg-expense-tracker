@@ -24,7 +24,6 @@ const CategoryService = {
                 });
             })
             .catch((err) => {
-                console.log(err)
                 dispatch({
                     type: ERROR_TYPE,
                     payload: err
