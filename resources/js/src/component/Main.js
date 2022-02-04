@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Dashboard from "./Dashboard";
 import Category from "./Category";
 import About from "./About";
+import NotFound from "./NotFound";
 
 
 const Main = ( props ) => {
@@ -12,9 +13,10 @@ const Main = ( props ) => {
         <Router>
             <Header />
             <Routes>
-                <Route path="/" component={Dashboard} />
-                <Route path="/category" component={Category}  />
-                <Route path="/about" component={About} />
+                <Route path="*" element={<NotFound />}/>
+                <Route path="/" element={<Dashboard/> } />
+                <Route path="/category" element={<Category />}  />
+                <Route path="/about" element={<About />} />
             </Routes>
         </Router>
 
