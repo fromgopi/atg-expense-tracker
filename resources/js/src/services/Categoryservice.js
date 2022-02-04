@@ -11,6 +11,7 @@ const CategoryService = {
      * @param dispatch
      */
     loadCategories(dispatch) {
+
         dispatch({
             type: LOAD_CATEGORIES,
             payload: null
