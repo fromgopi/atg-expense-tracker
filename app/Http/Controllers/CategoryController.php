@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\FieldValidationException;
 use App\Exceptions\JSONRequestException;
 use App\Models\Category;
+use App\Services\CategoryService;
+use App\Services\WebserviceLogService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -31,17 +34,24 @@ class CategoryController extends Controller
      * Show the form for creating a new resource.
      *
      * @return JsonResponse
-     * @throws JSONRequestException
+     * @throws JSONRequestException|FieldValidationException
      */
     public function create(Request $req): JsonResponse
     {
-        Log::debug($req->header('content-type'));
-        if ($req->header('content-type') != "application/json"){
+        if ($req->header('content-type') != config('constants.CONTENT_TYPE')) {
             Log::error("Throwing Json exception");
-            throw new JSONRequestException('Please check your header content type', 400);
+            throw new JSONRequestException(config('constants.INVALID_CONTENT_TYPE'), 422);
         }
-
-        return response()->json("acbbbc", 200);
+        if ($req->get('category_name') == "" or !$req->get('category_name')){
+            Log::error("Throwing Field Validation exception");
+            throw new FieldValidationException('category_name is not present', 400);
+        }
+        $req_data = $req->getContent();
+        $wbService = new WebserviceLogService();
+        $wbService->save_request($req_data, $_SERVER['REQUEST_URI'], $_SERVER['REMOTE_ADDR']);
+        $categoryService = new CategoryService();
+        $categoryService->create_category($req_data);
+        return response()->json("", 200);
     }
 
 

@@ -3,12 +3,13 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
-
-class JSONRequestException extends Exception
+class FieldValidationException extends Exception
 {
-    protected $message = "";
+    //
+    protected $message;
     protected $status_code;
 
     public function __construct($message = "", $code = 0)
@@ -18,26 +19,14 @@ class JSONRequestException extends Exception
         parent::__construct($message, $code);
     }
 
-    /**
-    * Report the exception.
-    *
-    * @return bool|null
-    */
-    public function report()
-    {
-        //
-        Log::error($this->getLine());
-
+    public function report(){
+        Log::error($this->getMessage().''.$this->getCode()  );
     }
 
     /**
-     * Render the exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function render($request)
-    {
+    public function render(){
         return response()->json(["error" => true, "message" => $this->getMessage(), "code" => $this->code], $this->status_code);
     }
 }
