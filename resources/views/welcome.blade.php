@@ -13,7 +13,7 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body class="antialiased">
-        <div id="atg-et"></div>
+        <div id="atg-et"></div> 
     </body>
     <script src="{{ asset('js/app.js') }}"></script>
 </html>
