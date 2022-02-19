@@ -19,7 +19,13 @@ class WebserviceLogService
         $this->application_name = "ATG-ET-API";
     }
 
-    public function save_request($payload, $resource_name, $ip_address)
+    /**
+     * @param $payload
+     * @param string $resource_name
+     * @param string $ip_address
+     * @return void
+     */
+    public function save_request($payload = [] | "", string $resource_name = "", string $ip_address = "")
     {
         $this->webServiceLogModel->application = $this->application_name;
         $this->webServiceLogModel->webservice_name = $resource_name;

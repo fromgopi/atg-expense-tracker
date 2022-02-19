@@ -27,7 +27,6 @@ class JSONRequestException extends Exception
     {
         //
         Log::error($this->getLine());
-
     }
 
     /**

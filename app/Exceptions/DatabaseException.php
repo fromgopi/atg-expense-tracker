@@ -6,20 +6,28 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 
-class FieldValidationException extends Exception
+class DatabaseException extends Exception
 {
+    //
     //
     protected $message;
     protected $status_code;
 
-    public function __construct($message = "", $code = 0)
+    public function __construct($message = "", $code = 500)
     {
-        $this->message = $message;
+        echo $this->message;
+        if ($message != "") {
+            $this->message = $message;
+        } else {
+            $this->message = config('constants.DATABASE_ERROR');
+        }
+
         $this->status_code = $code;
         parent::__construct($message, $code);
     }
 
     public function report(){
+
         Log::error($this->getMessage() .$this->getCode()  );
     }
 

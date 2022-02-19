@@ -4,29 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\FieldValidationException;
 use App\Exceptions\JSONRequestException;
-use App\Models\Category;
 use App\Services\CategoryService;
 use App\Services\WebserviceLogService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
-use mysql_xdevapi\Exception;
-use Symfony\Component\HttpFoundation\Exception\JsonException;
 
 class CategoryController extends Controller
 {
+    private $wbService;
+    private $categoryService;
+
+    public function __construct()
+    {
+        $this->wbService = new WebserviceLogService();
+        $this->categoryService = new CategoryService();
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
-        $categories = Category::all();
-        Log::info("Welcome to the category controller", ['12']);
-        Log::debug("This is debug log for from category controller");
+        $this->wbService->save_request('', $_SERVER['REQUEST_URI'], $_SERVER['REMOTE_ADDR']);
+        $categories = $this->categoryService->get_all_categories();
         return response()->json($categories, 200);
     }
 
@@ -47,8 +51,7 @@ class CategoryController extends Controller
             throw new FieldValidationException('category_name is not present', 400);
         }
         $req_data = $req->getContent();
-        $wbService = new WebserviceLogService();
-        $wbService->save_request($req_data, $_SERVER['REQUEST_URI'], $_SERVER['REMOTE_ADDR']);
+        $this->wbService->save_request($req_data, $_SERVER['REQUEST_URI'], $_SERVER['REMOTE_ADDR']);
         $categoryService = new CategoryService();
         $categoryService->create_category($req_data);
         return response()->json("", 200);

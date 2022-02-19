@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\Log;
 class CategoryService
 {
 
-    protected $category_model;
-
+    protected $categoryModel;
     public function __construct()
     {
-        $this->category_model = new Category();
+        $this->categoryModel = new Category();
+    }
+
+    function get_all_categories()
+    {
+        $categoryData = $this->categoryModel->get();
+        Log::info(' this is  '. $categoryData);
+        return $categoryData;
     }
 
     public function create_category($paylod = [])
