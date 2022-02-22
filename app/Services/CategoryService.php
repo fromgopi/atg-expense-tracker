@@ -26,7 +26,7 @@ class CategoryService
     /**
      * @param $paylod
      * @return void
-     *  
+     *   
      */
     public function create_category($paylod = [])
     {
