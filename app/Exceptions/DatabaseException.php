@@ -15,15 +15,12 @@ class DatabaseException extends Exception
 
     public function __construct($message = "", $code = 500)
     {
-        echo $this->message;
         if ($message != "") {
             $this->message = $message;
         } else {
             $this->message = config('constants.DATABASE_ERROR');
         }
-
         $this->status_code = $code;
-        parent::__construct($message, $code);
     }
 
     public function report(){
@@ -35,6 +32,9 @@ class DatabaseException extends Exception
      * @return JsonResponse
      */
     public function render(){
-        return response()->json(["error" => true, "message" => $this->getMessage(), "code" => $this->code], $this->status_code);
+        return response()->json(
+            ["error" => true, "message" => $this->getMessage(), "code" => $this->status_code],
+            $this->status_code
+        );
     }
 }

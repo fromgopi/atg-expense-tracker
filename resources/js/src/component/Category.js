@@ -34,7 +34,7 @@ const Category = () => {
                         {cate.categoryList.map((cat, index) =>
                             <tr key={index}>
                                 <td>{cat.id}</td>
-                                <td>{cat.category_name}</td>
+                                <td>{cat.name}</td>
                             </tr>
                         )}
                     </tbody>
