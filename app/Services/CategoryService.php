@@ -23,7 +23,10 @@ class CategoryService
         return $categoryData;
     }
 
-    
+    /**
+     * @param $paylod
+     * @return void
+     */
     public function create_category($paylod = [])
     {
         Log::info($paylod);
