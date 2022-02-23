@@ -1,7 +1,3 @@
-
-
-
-
 import axios from "axios";
 
 /**
