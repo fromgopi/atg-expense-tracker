@@ -11,7 +11,7 @@ const Category = () => {
     }, [dispatch])
     console.log(categories)
     const errorContainer = () => {
-        return <div>Error in API</div>
+        return <div><img src={loader} alt="loading ..." title="loading ..." className="loading"/></div>
     }
     const showLoader = () => {
         return(
