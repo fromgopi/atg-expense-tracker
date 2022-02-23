@@ -31,7 +31,7 @@ class CategoryController extends Controller
     {
         $this->wbService->save_request('', $_SERVER['REQUEST_URI'], $_SERVER['REMOTE_ADDR']);
         $categories = $this->categoryService->get_all_categories();
-        return response()->json($categories, 200);
+        return response()->json($categories, 404);
     }
 
     /**

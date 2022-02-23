@@ -18,7 +18,10 @@ const CategoryService = {
         })
         baseUrl.get('/category')
             .then( categories => {
-                console.log(categories.data)
+                console.log(categories.status)
+                if (categories.status === 404){
+                    throw new Error('Error');
+                }
                 dispatch({
                     type: GET_CATEGORIES,
                     payload: categories.data
