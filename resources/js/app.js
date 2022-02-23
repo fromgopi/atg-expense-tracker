@@ -4,4 +4,3 @@ require('./src');
 // We should include all the files.
 // require('./src/component/')
 
-
