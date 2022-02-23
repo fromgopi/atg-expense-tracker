@@ -15,4 +15,3 @@ if(document.getElementById("atg-et")){
         document.getElementById("atg-et")
     )
 }
-
