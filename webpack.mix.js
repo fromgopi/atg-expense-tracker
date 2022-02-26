@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix'); 
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 /*
 |--------------------------------------------------------------------------
