@@ -23,6 +23,6 @@ mix.webpackConfig( {
 })
 
 mix.js("resources/js/app.js", "public/js")
-    .react()
+    .react() 
     .sass("resources/css/app.scss", "public/css")
     .copy("resources/images", "public/images")
