@@ -20,6 +20,7 @@ const Category = () => {
             </div>
         )
 
+
         
     }
     const renderData = (cate) => {
