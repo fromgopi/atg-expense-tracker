@@ -21,7 +21,6 @@ const Category = () => {
         )
 
 
-
         
     }
     const renderData = (cate) => {
