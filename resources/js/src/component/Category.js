@@ -19,7 +19,6 @@ const Category = () => {
                 <img src={loader} alt="loading ..." title="loading ..."/>
             </div>
         )
-        
     }
     const renderData = (cate) => {
         return (
