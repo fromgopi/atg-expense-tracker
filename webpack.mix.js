@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require('laravel-mix'); 
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,6 @@ mix.webpackConfig( {
 })
 
 mix.js("resources/js/app.js", "public/js")
-    .react()
+    .react() 
     .sass("resources/css/app.scss", "public/css")
     .copy("resources/images", "public/images")
