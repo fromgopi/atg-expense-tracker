@@ -6,8 +6,8 @@
 |--------------------------------------------------------------------------
 |
 | The first thing we will do is create a new Laravel application instance
-| which serves as the "glue" for all the components of Laravel, and is
-| the IoC container for the system binding all of the various parts.
+| which serves as the "glue" for all the components of Laravel, and is  
+| the IoC container for the system binding all of the various parts. 
 |
 */
 
@@ -32,7 +32,7 @@ $app->singleton(
 );
 
 $app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
+    Illuminate\Contracts\Console\Kernel::class, 
     App\Console\Kernel::class
 );
 
