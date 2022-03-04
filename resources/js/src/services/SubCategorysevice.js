@@ -1,1 +1,1 @@
-// All the sub 
+// All the sub categories
