@@ -1,1 +1,1 @@
-// All the sub categories
+// All the sub categories will be added in this file.
