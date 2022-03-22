@@ -7,6 +7,8 @@ enabled = true
   [analyzers.meta]
   bootstrap_files = ["index.php"]
 
-[[analyzers]]
+[[analyzers]] 
 name = "shell"
 enabled = true
+
+ 
